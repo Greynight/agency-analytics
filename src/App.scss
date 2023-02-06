@@ -43,6 +43,11 @@ $background-color: #EEF6FB;
   background-color: $background-color;
   display: flex;
   color: $text-color;
+
+  &:focus-visible {
+    border: #0074D9 solid 1px;
+    outline: 0;
+  }
 }
 
 .TabSelected {

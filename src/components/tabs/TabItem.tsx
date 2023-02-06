@@ -13,16 +13,29 @@ class TabItem extends Component<TabItemProps> {
     updateAppState(this.props.item, weatherForecast);
   }
 
+  async handleTabPress(
+    event: React.KeyboardEvent<HTMLDivElement>,
+    context: any
+  ) {
+    if (event.code === "Space" || event.code === "Enter") {
+      await this.handleTabClick(context);
+    }
+  }
+
   render() {
     return (
       <DataContext.Consumer>
         {(context) => (
           <div
+            tabIndex={0}
+            aria-selected={context.city === this.props.item}
             data-testid="tab-item"
+            role="tab"
             className={
               context.city === this.props.item ? "Tab TabSelected" : "Tab"
             }
             onClick={() => this.handleTabClick(context)}
+            onKeyUp={(event) => this.handleTabPress(event, context)}
           >
             {this.props.item}
           </div>
