@@ -1,22 +1,6 @@
 import axios from "axios";
 import { BASE_API_URL, DAYS } from "../config";
-
-export interface WeatherData {
-  date?: string;
-  icon: string;
-  condition: string;
-  temperature: number;
-}
-
-export interface ForecastData {
-  current: WeatherData;
-  forecast: WeatherData[];
-}
-
-interface ApiData {
-  forecast: any;
-  current: any;
-}
+import { ApiData, ForecastData, WeatherData } from "../models";
 
 const mapCurrentData = (data: any): WeatherData => ({
   icon: data.condition.icon,

@@ -1,4 +1,4 @@
-import { createContext, Dispatch, SetStateAction } from "react";
+import { createContext } from "react";
 import { AppState } from "./models";
 import { CITIES } from "./config";
 

@@ -18,8 +18,9 @@ class TabItem extends Component<TabItemProps> {
       <DataContext.Consumer>
         {(context) => (
           <div
+            data-testid="tab-item"
             className={
-              context.city === this.props.item ? " Tab TabSelected" : "Tab"
+              context.city === this.props.item ? "Tab TabSelected" : "Tab"
             }
             onClick={() => this.handleTabClick(context)}
           >

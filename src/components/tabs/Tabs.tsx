@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import TabItem from "./TabItem";
 import { CITIES } from "../../config";
 

@@ -1,17 +1,31 @@
 import React, { Component } from "react";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
 import "./App.scss";
 import { DataContext, defaultState } from "./app-context";
-import { AppState } from "./models";
+import { AppState, ForecastData } from "./models";
 import Tabs from "./components/tabs/Tabs";
-import getWeatherForecast, { ForecastData } from "./services/weather-api";
+import getWeatherForecast from "./services/weather-api";
 import Current from "./components/current";
 import Forecast from "./components/forecast";
 
-class App extends Component {
+interface Props extends RouteComponentProps {}
+
+class App extends Component<Props, AppState> {
   state: AppState = {
     ...defaultState,
   };
+
+  static getDerivedStateFromProps(props: Props, state: AppState): AppState {
+    const { search } = props.location;
+    const urlParams = new URLSearchParams(search);
+    const city = urlParams.get("city");
+
+    return {
+      ...state,
+      city: city ? city : state.city,
+    };
+  }
 
   async componentDidMount() {
     const weatherForecast = await getWeatherForecast(this.state.city);
@@ -19,11 +33,12 @@ class App extends Component {
   }
 
   updateAppState = (city: string, weather: ForecastData): void => {
-    console.log(weather);
     this.setState({
       city: city,
       weatherData: { ...weather },
     });
+
+    this.props.history.push(`/?city=${city}`);
   };
 
   render() {
@@ -48,4 +63,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

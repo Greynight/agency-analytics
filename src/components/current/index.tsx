@@ -12,10 +12,14 @@ class Current extends Component<CurrentProps> {
       <div className="current">
         <div className="current_title">Today</div>
         <div className="current_data">
-          <img src={this.props.icon} className="current_data_icon" />
+          <img
+            src={this.props.icon}
+            className="current_data_icon"
+            alt={this.props.condition}
+          />
           <div className="current_data_conditions">
             <div className="current_data_conditions_temp">
-              {this.props.temperature}°C
+              {this.props.temperature}°
             </div>
             <div className="current_data_conditions_text">
               {this.props.condition}

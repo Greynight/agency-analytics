@@ -1,9 +1,13 @@
+$text-color: #9EA3A8;
+$numbers-color: #333339;
+$background-color: #EEF6FB;
+
 .App {
   text-align: center;
   display: flex;
   justify-content: center;
   height: 100vh;
-  background-color: #eef6fb;
+  background-color: $background-color;
 }
 
 .Container {
@@ -36,18 +40,23 @@
   cursor: pointer;
   align-items: center;
   font-size: 36px;
-  background-color: #eef6fb;
+  background-color: $background-color;
   display: flex;
+  color: $text-color;
 }
 
 .TabSelected {
   font-size: 36px;
   font-weight: bold;
+  color: #61B1E8;
 }
 
 .current {
   width: 100%;
   height: 290px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
 
   &_title {
     height: 110px;
@@ -55,6 +64,7 @@
     font-size: 24px;
     display: flex;
     justify-content: center;
+    color: $text-color;
   }
 
   &_data {
@@ -70,9 +80,11 @@
 
       &_temp {
         font-size: 48px;
+        color: $numbers-color;
       }
       &_text {
         font-size: 24px;
+        color: $text-color;
       }
     }
 
@@ -83,8 +95,6 @@
   flex-wrap: wrap;
   display: flex;
   width: 100%;
-  border-color: white;
-  border-style: solid;
 }
 
 .forecast {
@@ -96,13 +106,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &_day {
+    color: $text-color;
+  }
+
+  &_temp {
+    color: $numbers-color;
+    font-weight: bold;
+    font-size: 24px;
+  }
 }
 
 .weather-data {
   flex-wrap: wrap;
   display: flex;
   width: 100%;
-  border-width: 4px 4px 0 4px;
+  border-width: 2px;
   border-style: solid;
   border-color: white;
   border-radius: 8px;
