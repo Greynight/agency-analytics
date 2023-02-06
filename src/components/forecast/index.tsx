@@ -12,11 +12,13 @@ class Forecast extends Component<ForecastProps> {
       <div className="forecast-container">
         {this.props.data.map((item: WeatherData, index) => (
           <div className="forecast" key={index}>
-            <div className="forecast_day">
+            <div className="forecast_day" aria-label="Forecast day">
               {WEEKDAYS[new Date(`${item.date}`).getDay()]}
             </div>
             <img src={item.icon} alt={item.condition} />
-            <div className="forecast_temp">{item.temperature}°</div>
+            <div className="forecast_temp" aria-label="Forecast temperature">
+              {item.temperature}°
+            </div>
           </div>
         ))}
       </div>

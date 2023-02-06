@@ -18,10 +18,16 @@ class Current extends Component<CurrentProps> {
             alt={this.props.condition}
           />
           <div className="current_data_conditions">
-            <div className="current_data_conditions_temp">
+            <div
+              className="current_data_conditions_temp"
+              aria-label="Current temperature"
+            >
               {this.props.temperature}°
             </div>
-            <div className="current_data_conditions_text">
+            <div
+              className="current_data_conditions_text"
+              aria-label="Current weather conditions"
+            >
               {this.props.condition}
             </div>
           </div>
